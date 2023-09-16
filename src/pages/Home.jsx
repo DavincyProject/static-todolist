@@ -4,35 +4,39 @@ import TodoSearch from "../components/TodoSearch";
 import TodoFilter from "../components/TodoFilter";
 import Button from "../components/Button";
 
-export default function Home({ jsonData, setJsonData }) {
-  const [editedItemId, setEditedItemId] = useState(null);
-  const [editedText, setEditedText] = useState("");
-  const [activeFilter, setActiveFilter] = useState("All");
-  const [filteredData, setFilteredData] = useState([...jsonData]);
+export default function Home({ jsonData, setJsonData }) { // jsonData,setJsonData diambil dari App.jsx kemudian diproses dibawah
+  const [editedItemId, setEditedItemId] = useState(null); // untuk menyimpan id dari item yang diedit
+  const [editedText, setEditedText] = useState(""); // untuk menyimpan teks sebelumnya pada saat diedit 
+  const [activeFilter, setActiveFilter] = useState("All"); // untuk menyimpan filter yang aktif saat ini (defaultnya di All)
+  const [filteredData, setFilteredData] = useState([...jsonData]); // untuk memfilter data berdasarkan filter yang aktif ("All", "Done", "Todo")
 
+
+  // supaya setiap kali data json berubah, tampilan awal tetap di filter All
   useEffect(() => {
     setActiveFilter("All");
   }, [jsonData]);
 
+  // untuk memperbarui data filter setiap jsonData berubah, tampilan akan berubah ketika pilihan filter dipilih
+  useEffect(() => {
+    const filtered = jsonData.filter((item) => {
+      if (activeFilter === "All") {
+        return true; // munculkan semua item langsung tanpa melihat status completenya di data
+      } else if (activeFilter === "Done") {
+        return item.complete; // munculkan item yang status completenya true
+      } else if (activeFilter === "Todo") {
+        return !item.complete; // munculkan item yang status completenya false
+      }
+      return true;
+    });
+    setFilteredData(filtered); // setelah kondisi diatas terpenuhi, update filtered data menjadi sesuai filtered yang dipilih
+  }, [jsonData, activeFilter]);
+
+  //untuk ubah filter yang aktif di component <TodoFilter onFilterChange={handleFilterChange} /> dibawah
   const handleFilterChange = (filter) => {
     setActiveFilter(filter);
   };
 
-  useEffect(() => {
-    const filtered = jsonData.filter((item) => {
-      if (activeFilter === "All") {
-        return true;
-      } else if (activeFilter === "Done") {
-        return item.complete;
-      } else if (activeFilter === "Todo") {
-        return !item.complete;
-      }
-      return true;
-    });
-    setFilteredData(filtered);
-  }, [jsonData, activeFilter]);
-
-
+  //untuk menandai tugas jika complete true atau false
   const handleCheckbox = (itemId) => {
     setJsonData((prevData) =>
       prevData.map((item) =>
@@ -41,6 +45,7 @@ export default function Home({ jsonData, setJsonData }) {
     );
   };
 
+  // untuk hapus tugas 
   const handleDelete = (itemId) => {
     const confirmDelete = window.confirm("yakin ingin menghapus task ini?");
     if (confirmDelete) {
@@ -48,11 +53,13 @@ export default function Home({ jsonData, setJsonData }) {
     }
   };
 
+  // untuk edit tugas
   const handleEdit = (itemId, initialText) => {
     setEditedItemId(itemId);
     setEditedText(initialText);
   };
 
+  // untuk simpan tugas yang sudah selesai diedit
   const handleSaveEdit = (itemId) => {
     setJsonData((prevData) =>
       prevData.map((item) =>
@@ -63,6 +70,7 @@ export default function Home({ jsonData, setJsonData }) {
     setEditedText("")
   };
 
+  // untuk menghapus semua tugas dengan properti object complete true
   const handleDeleteDone = () => {
     const confirmDelete = window.confirm("yakin ingin menghapus task yang sudah selesai?");
     if (confirmDelete) {
@@ -70,6 +78,7 @@ export default function Home({ jsonData, setJsonData }) {
     }
   }
 
+  // untuk menghapus semua tugas di dalam json data dan membuat array menjadi kosong
   const handleDeleteAll = () => {
     const confirmDelete = window.confirm("yakin ingin menghapus semua task?");
     if (confirmDelete) {

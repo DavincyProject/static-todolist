@@ -4,9 +4,10 @@ import Button from "./Button";
 import PropTypes from 'prop-types';
 
 export default function TodoFilter({ onFilterChange }) {
+  //set default filter ke All agar tampilan filter selalu active di All sebelum di klik
   const [activeFilter, setActiveFilter] = useState("All");
 
-  const handleFilterChange = (filter) => {
+  const handleFilterChange = (filter) => { // filter akan menangkap onclick dibawah dan dikirim ke Home agar tampilan sesuai dengan filter yang dipilih
     setActiveFilter(filter);
     onFilterChange(filter);
   }
