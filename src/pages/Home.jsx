@@ -10,6 +10,7 @@ export default function Home({ jsonData, setJsonData }) {
   const [editedItemId, setEditedItemId] = useState(null);
   const [editedText, setEditedText] = useState("");
   const [activeFilter, setActiveFilter] = useState("All");
+  const [filteredData, setFilteredData] = useState([...jsonData]);
 
   useEffect(() => {
     setActiveFilter("All");
@@ -19,17 +20,20 @@ export default function Home({ jsonData, setJsonData }) {
     setActiveFilter(filter);
   };
 
-  // Menyaring tugas berdasarkan filter yang aktif
-  const filteredData = jsonData.filter((item) => {
-    if (activeFilter === "All") {
+  useEffect(() => {
+    const filtered = jsonData.filter((item) => {
+      if (activeFilter === "All") {
+        return true;
+      } else if (activeFilter === "Done") {
+        return item.complete;
+      } else if (activeFilter === "Todo") {
+        return !item.complete;
+      }
       return true;
-    } else if (activeFilter === "Done") {
-      return item.complete;
-    } else if (activeFilter === "Todo") {
-      return !item.complete;
-    }
-    return true;
-  });
+    });
+    setFilteredData(filtered);
+  }, [jsonData, activeFilter]);
+
 
   const handleCheckbox = (itemId) => {
     setJsonData((prevData) =>
@@ -77,7 +81,7 @@ export default function Home({ jsonData, setJsonData }) {
 
   return (
     <div className="container w-11/12  mx-auto p-5 border rounded-md mt-5">
-      <TodoSearch />
+      <TodoSearch jsonData={jsonData} setFilteredData={setFilteredData} />
       <TodoFilter onFilterChange={handleFilterChange} />
 
       <div className="container rounded">
