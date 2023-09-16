@@ -4,8 +4,6 @@ import TodoSearch from "../components/TodoSearch";
 import TodoFilter from "../components/TodoFilter";
 import Button from "../components/Button";
 
-// import data from "../json/data.json";
-
 export default function Home({ jsonData, setJsonData }) {
   const [editedItemId, setEditedItemId] = useState(null);
   const [editedText, setEditedText] = useState("");

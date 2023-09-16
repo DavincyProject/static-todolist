@@ -1,4 +1,4 @@
-import React from "react";
+import { useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import Home from "./pages/Home";
@@ -6,7 +6,7 @@ import AddTodo from "./pages/AddTodo";
 import data from "./json/data.json";
 
 function App() {
-  const [jsonData, setJsonData] = React.useState([...data]);
+  const [jsonData, setJsonData] = useState([...data]);
 
   return (
     <>
