@@ -41,7 +41,10 @@ export default function Home() {
   };
 
   const handleDelete = (itemId) => {
-    setJsonData((prevData) => prevData.filter((item) => item.id !== itemId));
+    const confirmDelete = window.confirm("yakin ingin menghapus task ini?");
+    if (confirmDelete) {
+      setJsonData((prevData) => prevData.filter((item) => item.id !== itemId));
+    }
   };
 
   const handleEdit = (itemId, initialText) => {
@@ -60,11 +63,17 @@ export default function Home() {
   };
 
   const handleDeleteDone = () => {
-    setJsonData((prevData) => prevData.filter((item) => !item.complete));
+    const confirmDelete = window.confirm("yakin ingin menghapus task yang sudah selesai?");
+    if (confirmDelete) {
+      setJsonData((prevData) => prevData.filter((item) => !item.complete));
+    }
   }
 
   const handleDeleteAll = () => {
-    setJsonData([]);
+    const confirmDelete = window.confirm("yakin ingin menghapus semua task?");
+    if (confirmDelete) {
+      setJsonData([]);
+    }
   }
 
   return (
