@@ -15,14 +15,16 @@ export default function TodoSearch() {
             ></input>
           </div>
 
-          <button className="bg-btn-default rounded mt-2 text-white font-medium h-8">
+          <button className="bg-btn-default rounded mt-2 text-white hover:text-slate-600 font-medium h-8">
             Search
           </button>
         </div>
         <div className="flex flex-col-reverse w-1/2">
-          <button className="bg-btn-default rounded mt-2 text-white font-medium w-full h-8">
-            <Link to="/add-todo">Add New Task</Link>
-          </button>
+          <Link to="/add-todo">
+            <button className="bg-btn-default rounded mt-2 text-white hover:text-slate-600 font-medium w-full h-8">
+              Add New Task
+            </button>
+          </Link>
         </div>
       </div>
     </div>
