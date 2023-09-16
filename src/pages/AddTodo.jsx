@@ -1,8 +1,10 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import propTypes from 'prop-types';
 
 export default function AddTodo({ jsonData, setJsonData }) {
   const [newTodo, setNewTodo] = useState("");
+  const navigate = useNavigate()
 
   const handleInputChange = (e) => {
     setNewTodo(e.target.value);
@@ -22,6 +24,8 @@ export default function AddTodo({ jsonData, setJsonData }) {
     // tambah object baru ke json
     setJsonData((prevData) => [...prevData, newTodoObject]);
     setNewTodo(""); //reset inputnya abis ditambah
+
+    navigate("/");
   }
 
   return (

@@ -1,20 +1,19 @@
+import propTypes from 'prop-types';
 import { useState, useEffect } from "react";
 import TodoSearch from "../components/TodoSearch";
 import TodoFilter from "../components/TodoFilter";
 import Button from "../components/Button";
 
-import data from "../json/data.json";
+// import data from "../json/data.json";
 
-export default function Home() {
-  const [jsonData, setJsonData] = useState([]);
+export default function Home({ jsonData, setJsonData }) {
   const [editedItemId, setEditedItemId] = useState(null);
   const [editedText, setEditedText] = useState("");
   const [activeFilter, setActiveFilter] = useState("All");
 
   useEffect(() => {
-    setJsonData(data);
     setActiveFilter("All");
-  }, []);
+  }, [jsonData]);
 
   const handleFilterChange = (filter) => {
     setActiveFilter(filter);
@@ -145,4 +144,9 @@ export default function Home() {
       </div>
     </div>
   );
+}
+
+Home.propTypes = {
+  jsonData: propTypes.array,
+  setJsonData: propTypes.func
 }
