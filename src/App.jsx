@@ -10,15 +10,20 @@ function App() {
 
   return (
     <>
-
       {/* 
       jsonData={jsonData} setJsonData={setJsonData} dilempar ke dalam component
       dibawah agar data json dapat terbaca di file Home dan juga AddTodo 
       */}
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Home jsonData={jsonData} setJsonData={setJsonData} />} />
-          <Route path="/add-todo" element={<AddTodo jsonData={jsonData} setJsonData={setJsonData} />} />
+          <Route
+            path="/"
+            element={<Home jsonData={jsonData} setJsonData={setJsonData} />}
+          />
+          <Route
+            path="/add-todo"
+            element={<AddTodo jsonData={jsonData} setJsonData={setJsonData} />}
+          />
 
           <Route path="*" element={<h1>404 | NOT FOUND</h1>} />
         </Routes>

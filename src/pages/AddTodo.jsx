@@ -1,19 +1,19 @@
 import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
-import propTypes from 'prop-types';
+import propTypes from "prop-types";
 
 export default function AddTodo({ jsonData, setJsonData }) {
   const [newTodo, setNewTodo] = useState("");
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const handleInputChange = (e) => {
     setNewTodo(e.target.value);
-  }
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault(); // supaya tidak refresh saat kirim form
 
-    // cek jika input kosong, jangan kirim form (selesai dari blok kode). 
+    // cek jika input kosong, jangan kirim form (selesai dari blok kode).
     // jika tidak kosong akan dikirim data berupa object baru ke data.json
     //menggunakan trim agar spasi saja tidak bisa terkirim juga
     if (newTodo.trim() === "") return;
@@ -22,14 +22,14 @@ export default function AddTodo({ jsonData, setJsonData }) {
       id: jsonData.length + 1,
       task: newTodo,
       complete: false,
-    }
+    };
 
     // tambah object baru ke json
     setJsonData((prevData) => [...prevData, newTodoObject]);
     setNewTodo(""); //reset inputnya abis ditambah
 
     navigate("/"); // redirect ke home pages
-  }
+  };
 
   return (
     <>
@@ -38,7 +38,9 @@ export default function AddTodo({ jsonData, setJsonData }) {
           <div className=" flex flex-col">
             <div className="flex justify-between gap-2 items-center">
               <h1 className="font-bold text-2xl my-3">TodoInput</h1>
-              <Link to="/"><img src="close.svg"></img></Link>
+              <Link to="/">
+                <img src="close.svg"></img>
+              </Link>
             </div>
             <form className="w-full" onSubmit={handleSubmit}>
               <div className="flex flex-col w-auto">
@@ -69,5 +71,5 @@ export default function AddTodo({ jsonData, setJsonData }) {
 
 AddTodo.propTypes = {
   jsonData: propTypes.array,
-  setJsonData: propTypes.func
-}
+  setJsonData: propTypes.func,
+};

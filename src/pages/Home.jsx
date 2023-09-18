@@ -1,15 +1,15 @@
-import propTypes from 'prop-types';
+import propTypes from "prop-types";
 import { useState, useEffect } from "react";
 import TodoSearch from "../components/TodoSearch";
 import TodoFilter from "../components/TodoFilter";
 import Button from "../components/Button";
 
-export default function Home({ jsonData, setJsonData }) { // jsonData,setJsonData diambil dari App.jsx kemudian diproses dibawah
+export default function Home({ jsonData, setJsonData }) {
+  // jsonData,setJsonData diambil dari App.jsx kemudian diproses dibawah
   const [editedItemId, setEditedItemId] = useState(null); // untuk menyimpan id dari item yang diedit
-  const [editedText, setEditedText] = useState(""); // untuk menyimpan teks sebelumnya pada saat diedit 
+  const [editedText, setEditedText] = useState(""); // untuk menyimpan teks sebelumnya pada saat diedit
   const [activeFilter, setActiveFilter] = useState("All"); // untuk menyimpan filter yang aktif saat ini (defaultnya di All)
   const [filteredData, setFilteredData] = useState([...jsonData]); // untuk memfilter data berdasarkan filter yang aktif ("All", "Done", "Todo")
-
 
   // supaya setiap kali data json berubah, tampilan awal tetap di filter All
   useEffect(() => {
@@ -45,7 +45,7 @@ export default function Home({ jsonData, setJsonData }) { // jsonData,setJsonDat
     );
   };
 
-  // untuk hapus tugas 
+  // untuk hapus tugas
   const handleDelete = (itemId) => {
     const confirmDelete = window.confirm("yakin ingin menghapus task ini?");
     if (confirmDelete) {
@@ -67,16 +67,18 @@ export default function Home({ jsonData, setJsonData }) { // jsonData,setJsonDat
       )
     );
     setEditedItemId(null);
-    setEditedText("")
+    setEditedText("");
   };
 
   // untuk menghapus semua tugas dengan properti object complete true
   const handleDeleteDone = () => {
-    const confirmDelete = window.confirm("yakin ingin menghapus task yang sudah selesai?");
+    const confirmDelete = window.confirm(
+      "yakin ingin menghapus task yang sudah selesai?"
+    );
     if (confirmDelete) {
       setJsonData((prevData) => prevData.filter((item) => !item.complete));
     }
-  }
+  };
 
   // untuk menghapus semua tugas di dalam json data dan membuat array menjadi kosong
   const handleDeleteAll = () => {
@@ -84,7 +86,7 @@ export default function Home({ jsonData, setJsonData }) { // jsonData,setJsonDat
     if (confirmDelete) {
       setJsonData([]);
     }
-  }
+  };
 
   return (
     <div className="container w-11/12  mx-auto p-5 border rounded-md mt-5">
@@ -98,7 +100,6 @@ export default function Home({ jsonData, setJsonData }) { // jsonData,setJsonDat
               key={i}
               className="flex justify-between w-auto border rounded-sm m-2 p-2"
             >
-
               {editedItemId === item.id ? (
                 <div className="w-full">
                   <input
@@ -117,7 +118,6 @@ export default function Home({ jsonData, setJsonData }) { // jsonData,setJsonDat
                 </li>
               )}
 
-
               <div className="flex gap-1 mx-5 items-center justify-center">
                 <input
                   type="checkbox"
@@ -129,7 +129,9 @@ export default function Home({ jsonData, setJsonData }) { // jsonData,setJsonDat
                 {editedItemId === item.id ? (
                   <button onClick={() => handleSaveEdit(item.id)}>💾</button>
                 ) : (
-                  <button onClick={() => handleEdit(item.id, item.task)}>✏️</button>
+                  <button onClick={() => handleEdit(item.id, item.task)}>
+                    ✏️
+                  </button>
                 )}
 
                 <button onClick={() => handleDelete(item.id)}>🗑️</button>
@@ -159,5 +161,5 @@ export default function Home({ jsonData, setJsonData }) { // jsonData,setJsonDat
 
 Home.propTypes = {
   jsonData: propTypes.array,
-  setJsonData: propTypes.func
-}
+  setJsonData: propTypes.func,
+};

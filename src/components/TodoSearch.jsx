@@ -1,20 +1,20 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import propTypes from 'prop-types';
+import propTypes from "prop-types";
 
 export default function TodoSearch({ jsonData, setFilteredData }) {
   const [search, setSearch] = useState("");
 
   const handleInputChange = (e) => {
     setSearch(e.target.value);
-  }
+  };
 
   const handleSearch = () => {
     const filter = jsonData.filter((item) =>
       item.task.toLowerCase().includes(search.toLowerCase())
     );
     setFilteredData(filter);
-  }
+  };
 
   return (
     <div className="mb-4">
@@ -31,7 +31,10 @@ export default function TodoSearch({ jsonData, setFilteredData }) {
             ></input>
           </div>
 
-          <button onClick={handleSearch} className="bg-btn-default rounded mt-2 text-white hover:text-slate-600 font-medium h-8">
+          <button
+            onClick={handleSearch}
+            className="bg-btn-default rounded mt-2 text-white hover:text-slate-600 font-medium h-8"
+          >
             Search
           </button>
         </div>
@@ -49,5 +52,5 @@ export default function TodoSearch({ jsonData, setFilteredData }) {
 
 TodoSearch.propTypes = {
   jsonData: propTypes.array,
-  setFilteredData: propTypes.func
-}
+  setFilteredData: propTypes.func,
+};
