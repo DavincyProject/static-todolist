@@ -45,10 +45,10 @@ export default function AddTodo({ jsonData, setJsonData }) {
             <form className="w-full" onSubmit={handleSubmit}>
               <div className="flex flex-col w-auto">
                 <div className="flex items-center gap-2">
-                  📝
+                  <label htmlFor="Add_Todo">📝</label>
                   <input
                     placeholder="Add Todo"
-                    className="border p-1 w-full"
+                    className="border p-1 w-full rounded-sm"
                     value={newTodo}
                     onChange={handleInputChange}
                   ></input>

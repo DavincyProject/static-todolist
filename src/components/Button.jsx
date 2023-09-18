@@ -8,8 +8,8 @@ export default function Button(props) {
   } rounded mt-2 text-white font-medium w-full h-7`;
 
   return (
-    // eslint-disable-next-line react/no-unknown-property
     <button
+      // eslint-disable-next-line react/no-unknown-property
       bgColor={bgColor}
       onClick={onClick}
       type={type}
