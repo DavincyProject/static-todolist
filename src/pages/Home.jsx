@@ -129,13 +129,19 @@ export default function Home({ jsonData, setJsonData }) {
                 {editedItemId === item.id ? (
                   <button onClick={() => handleSaveEdit(item.id)}>💾</button>
                 ) : (
-                  <button onClick={() => handleEdit(item.id, item.task)}>
-                    <img className="w-6 h-6" src="edit.svg"></img>
+                  <button
+                    aria-label="button edit"
+                    onClick={() => handleEdit(item.id, item.task)}
+                  >
+                    <img className="w-6 h-6" src="edit.svg" alt="edit"></img>
                   </button>
                 )}
 
-                <button onClick={() => handleDelete(item.id)}>
-                  <img className="w-6 h-6" src="delete.svg"></img>
+                <button
+                  aria-label="button delete"
+                  onClick={() => handleDelete(item.id)}
+                >
+                  <img className="w-6 h-6" src="delete.svg" alt="delete"></img>
                 </button>
               </div>
             </div>
