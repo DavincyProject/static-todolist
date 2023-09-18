@@ -121,7 +121,7 @@ export default function Home({ jsonData, setJsonData }) {
               <div className="flex gap-1 mx-5 items-center justify-center">
                 <input
                   type="checkbox"
-                  className="w-4 h-4"
+                  className="w-6 h-6"
                   checked={item.complete}
                   onChange={() => handleCheckbox(item.id)}
                 />
@@ -130,11 +130,13 @@ export default function Home({ jsonData, setJsonData }) {
                   <button onClick={() => handleSaveEdit(item.id)}>💾</button>
                 ) : (
                   <button onClick={() => handleEdit(item.id, item.task)}>
-                    ✏️
+                    <img className="w-6 h-6" src="edit.svg"></img>
                   </button>
                 )}
 
-                <button onClick={() => handleDelete(item.id)}>🗑️</button>
+                <button onClick={() => handleDelete(item.id)}>
+                  <img className="w-6 h-6" src="delete.svg"></img>
+                </button>
               </div>
             </div>
           ))}
