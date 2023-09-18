@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import propTypes from 'prop-types';
 
 export default function AddTodo({ jsonData, setJsonData }) {
@@ -35,8 +35,11 @@ export default function AddTodo({ jsonData, setJsonData }) {
     <>
       <div className="flex justify-center items-center min-h-screen">
         <div className="container w-11/12 mt-2 mx-auto border rounded-md p-4">
-          <div className=" flex flex-col justify-center items-center">
-            <h1 className="font-bold text-2xl my-3">TodoInput</h1>
+          <div className=" flex flex-col">
+            <div className="flex justify-between gap-2 items-center">
+              <h1 className="font-bold text-2xl my-3">TodoInput</h1>
+              <Link to="/"><img src="close.svg"></img></Link>
+            </div>
             <form className="w-full" onSubmit={handleSubmit}>
               <div className="flex flex-col w-auto">
                 <div className="flex items-center gap-2">
