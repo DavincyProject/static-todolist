@@ -95,57 +95,61 @@ export default function Home({ jsonData, setJsonData }) {
 
       <div className="container rounded">
         <ul>
-          {filteredData.map((item, i) => (
-            <div
-              key={i}
-              className="flex justify-between w-auto border rounded-sm m-2 p-2"
-            >
-              {editedItemId === item.id ? (
-                <div className="w-full">
-                  <input
-                    type="text"
-                    className="p-1 w-full border rounded"
-                    value={editedText} // Menggunakan item.task sebagai nilai input teks
-                    onChange={(e) => setEditedText(e.target.value)}
-                    autoFocus
-                  />
-                </div>
-              ) : (
-                <li
-                  className={item.complete ? "line-through text-red-700" : ""}
-                >
-                  {item.task}
-                </li>
-              )}
-
-              <div className="flex gap-1 mx-5 items-center justify-center">
-                <input
-                  type="checkbox"
-                  className="w-[22px] h-[22px] hover:cursor-pointer"
-                  checked={item.complete}
-                  onChange={() => handleCheckbox(item.id)}
-                />
-
+          {filteredData.length === 0 ? (
+            <p className="text-center text-lg text-red-700 border rounded-md mx-2 font-bold">Item is not available</p>
+          ) : (
+            filteredData.map((item, i) => (
+              <div
+                key={i}
+                className="flex justify-between w-auto border rounded-sm m-2 p-2"
+              >
                 {editedItemId === item.id ? (
-                  <button onClick={() => handleSaveEdit(item.id)}>💾</button>
+                  <div className="w-full">
+                    <input
+                      type="text"
+                      className="p-1 w-full border rounded"
+                      value={editedText} // Menggunakan item.task sebagai nilai input teks
+                      onChange={(e) => setEditedText(e.target.value)}
+                      autoFocus
+                    />
+                  </div>
                 ) : (
-                  <button
-                    aria-label="button edit"
-                    onClick={() => handleEdit(item.id, item.task)}
+                  <li
+                    className={item.complete ? "line-through text-red-700" : ""}
                   >
-                    <img className="w-[22px] h-[22px]" src="edit.svg" alt="edit"></img>
-                  </button>
+                    {item.task}
+                  </li>
                 )}
 
-                <button
-                  aria-label="button delete"
-                  onClick={() => handleDelete(item.id)}
-                >
-                  <img className="w-[22px] h-[22px]" src="delete.svg" alt="delete"></img>
-                </button>
+                <div className="flex gap-1 mx-5 items-center justify-center">
+                  <input
+                    type="checkbox"
+                    className="w-[22px] h-[22px] hover:cursor-pointer"
+                    checked={item.complete}
+                    onChange={() => handleCheckbox(item.id)}
+                  />
+
+                  {editedItemId === item.id ? (
+                    <button onClick={() => handleSaveEdit(item.id)}>💾</button>
+                  ) : (
+                    <button
+                      aria-label="button edit"
+                      onClick={() => handleEdit(item.id, item.task)}
+                    >
+                      <img className="w-[22px] h-[22px]" src="edit.svg" alt="edit"></img>
+                    </button>
+                  )}
+
+                  <button
+                    aria-label="button delete"
+                    onClick={() => handleDelete(item.id)}
+                  >
+                    <img className="w-[22px] h-[22px]" src="delete.svg" alt="delete"></img>
+                  </button>
+                </div>
               </div>
-            </div>
-          ))}
+            ))
+          )}
         </ul>
       </div>
 
