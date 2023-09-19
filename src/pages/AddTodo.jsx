@@ -48,7 +48,7 @@ export default function AddTodo({ jsonData, setJsonData }) {
                   <span
                     className="flex items-center bg-btn-default whitespace-nowrap rounded-l border border-r-0 border-solid border-neutral-300 px-3 py-[0.25rem] text-center text-base font-normal leading-[1.6] text-neutral-700 dark:border-neutral-600 dark:text-neutral-200 dark:placeholder:text-neutral-200"
                     id="addon-wrapping"
-                  >📝</span>
+                  ><img src='book.svg' className='w-[22px] h-[22px] '></img></span>
                   <input
                     type="text"
                     placeholder="Add Todo"

@@ -13,7 +13,7 @@ export default function TodoFilter({ onFilterChange }) {
   };
 
   return (
-    <div className="mb-5">
+    <div className="mb-5 my-5">
       <h1 className="text-3xl font-bold text-center">Todo List</h1>
       <div className="container-fluid mx-2 mt-2 p-2 border rounded-md">
         <div className="flex justify-evenly items-center gap-2">
