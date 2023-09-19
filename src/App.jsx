@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import AddTodo from "./pages/AddTodo";
 import data from "./json/data.json";
+import Test from "./pages/Test";
 
 function App() {
   const [jsonData, setJsonData] = useState([...data]); //inisiasi data json dari data.json ke dalam jsonData
@@ -24,6 +25,7 @@ function App() {
             path="/add-todo"
             element={<AddTodo jsonData={jsonData} setJsonData={setJsonData} />}
           />
+          <Route path="/tes" element={<Test />} />
 
           <Route path="*" element={<h1>404 | NOT FOUND</h1>} />
         </Routes>
