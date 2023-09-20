@@ -1,4 +1,4 @@
-import propTypes from "prop-types";
+import PropTypes from "prop-types";
 import { useState, useEffect } from "react";
 import TodoSearch from "../components/TodoSearch";
 import TodoFilter from "../components/TodoFilter";
@@ -172,6 +172,6 @@ export default function Home({ jsonData, setJsonData }) {
 }
 
 Home.propTypes = {
-  jsonData: propTypes.array,
-  setJsonData: propTypes.func,
+  jsonData: PropTypes.array,
+  setJsonData: PropTypes.func,
 };

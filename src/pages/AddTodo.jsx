@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
-import propTypes from "prop-types";
+import PropTypes from "prop-types";
 
 export default function AddTodo({ jsonData, setJsonData }) {
   const [newTodo, setNewTodo] = useState("");
@@ -76,6 +76,6 @@ export default function AddTodo({ jsonData, setJsonData }) {
 }
 
 AddTodo.propTypes = {
-  jsonData: propTypes.array,
-  setJsonData: propTypes.func,
+  jsonData: PropTypes.array,
+  setJsonData: PropTypes.func,
 };

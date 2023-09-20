@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import propTypes from "prop-types";
+import PropTypes from "prop-types";
 
 export default function TodoSearch({ jsonData, setFilteredData }) {
   const [search, setSearch] = useState("");
@@ -66,6 +66,6 @@ export default function TodoSearch({ jsonData, setFilteredData }) {
 }
 
 TodoSearch.propTypes = {
-  jsonData: propTypes.array,
-  setFilteredData: propTypes.func,
+  jsonData: PropTypes.array,
+  setFilteredData: PropTypes.func,
 };
