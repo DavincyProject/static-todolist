@@ -7,7 +7,7 @@ export default function TodoFilter({ onFilterChange }) {
   const [activeFilter, setActiveFilter] = useState("All");
 
   const handleFilterChange = (filter) => {
-    // filter akan menangkap onclick dibawah dan dikirim ke Home agar tampilan sesuai dengan filter yang dipilih
+    // filter akan menangkap onclick dibawah agar tampilan sesuai dengan filter yang dipilih
     setActiveFilter(filter);
     onFilterChange(filter);
   };

@@ -38,8 +38,8 @@ export default function Home({ jsonData, setJsonData }) {
 
   //untuk menandai tugas jika complete true atau false
   const handleCheckbox = (itemId) => {
-    setJsonData((prevData) =>
-      prevData.map((item) =>
+    setJsonData((jsonData) =>
+      jsonData.map((item) =>
         item.id === itemId ? { ...item, complete: !item.complete } : item
       )
     );
@@ -49,7 +49,7 @@ export default function Home({ jsonData, setJsonData }) {
   const handleDelete = (itemId) => {
     const confirmDelete = window.confirm("yakin ingin menghapus task ini?");
     if (confirmDelete) {
-      setJsonData((prevData) => prevData.filter((item) => item.id !== itemId));
+      setJsonData((jsonData) => jsonData.filter((item) => item.id !== itemId));
     }
   };
 
@@ -61,8 +61,8 @@ export default function Home({ jsonData, setJsonData }) {
 
   // untuk simpan tugas yang sudah selesai diedit
   const handleSaveEdit = (itemId) => {
-    setJsonData((prevData) =>
-      prevData.map((item) =>
+    setJsonData((jsonData) =>
+      jsonData.map((item) =>
         item.id === itemId ? { ...item, task: editedText } : item
       )
     );
@@ -76,7 +76,7 @@ export default function Home({ jsonData, setJsonData }) {
       "yakin ingin menghapus task yang sudah selesai?"
     );
     if (confirmDelete) {
-      setJsonData((prevData) => prevData.filter((item) => !item.complete));
+      setJsonData((jsonData) => jsonData.filter((item) => !item.complete));
     }
   };
 

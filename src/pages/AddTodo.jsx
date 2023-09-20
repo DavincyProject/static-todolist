@@ -25,7 +25,7 @@ export default function AddTodo({ jsonData, setJsonData }) {
     };
 
     // tambah object baru ke json
-    setJsonData((prevData) => [...prevData, newTodoObject]);
+    setJsonData((jsonData) => [...jsonData, newTodoObject]);
     setNewTodo(""); //reset inputnya abis ditambah
 
     navigate("/"); // redirect ke home pages
