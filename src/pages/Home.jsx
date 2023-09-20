@@ -96,7 +96,9 @@ export default function Home({ jsonData, setJsonData }) {
       <div className="container rounded">
         <ul>
           {filteredData.length === 0 ? (
-            <p className="text-center text-lg text-red-700 border rounded-md mx-2 font-bold">Item is not available</p>
+            <p className="text-center text-lg text-red-700 border rounded-md mx-2 font-bold">
+              Item is not available
+            </p>
           ) : (
             filteredData.map((item, i) => (
               <div
@@ -127,6 +129,7 @@ export default function Home({ jsonData, setJsonData }) {
                     className="w-[22px] h-[22px] hover:cursor-pointer"
                     checked={item.complete}
                     onChange={() => handleCheckbox(item.id)}
+                    aria-label="Checkbox"
                   />
 
                   {editedItemId === item.id ? (
@@ -136,7 +139,11 @@ export default function Home({ jsonData, setJsonData }) {
                       aria-label="button edit"
                       onClick={() => handleEdit(item.id, item.task)}
                     >
-                      <img className="w-[22px] h-[22px]" src="edit.svg" alt="edit"></img>
+                      <img
+                        className="w-[22px] h-[22px]"
+                        src="edit.svg"
+                        alt="edit"
+                      ></img>
                     </button>
                   )}
 
@@ -144,7 +151,11 @@ export default function Home({ jsonData, setJsonData }) {
                     aria-label="button delete"
                     onClick={() => handleDelete(item.id)}
                   >
-                    <img className="w-[22px] h-[22px]" src="delete.svg" alt="delete"></img>
+                    <img
+                      className="w-[22px] h-[22px]"
+                      src="delete.svg"
+                      alt="delete"
+                    ></img>
                   </button>
                 </div>
               </div>
