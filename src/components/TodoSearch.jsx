@@ -32,7 +32,7 @@ export default function TodoSearch({ jsonData, setFilteredData }) {
             >
               <img
                 src="search.svg"
-                className="sm:w-[15px] sm:h-[15px] w-[22px] h-[22px]"
+                className="sm:w-[17px] sm:h-[17px] max-w-[22px] max-h-[22px]"
                 alt="search"
               ></img>
             </span>
@@ -41,7 +41,7 @@ export default function TodoSearch({ jsonData, setFilteredData }) {
               placeholder="Search Todo"
               aria-label="Search Todo"
               aria-describedby="addon-wrapping"
-              className="sm:text-sm md:text-md lg:text-lg relative m-0 block w-[1px] min-w-0 flex-auto rounded-r border border-solid border-neutral-300 bg-transparent bg-clip-padding px-3 py-[0.25rem] text-base font-normal leading-[1.6] text-neutral-700 outline-none transition duration-200 ease-in-out focus:z-[3] focus:border-primary focus:text-neutral-700 focus:shadow-[inset_0_0_0_1px_rgb(59,113,202)] focus:outline-none dark:border-neutral-600 dark:text-neutral-200 dark:placeholder:text-neutral-200 dark:focus:border-primary"
+              className="relative m-0 block w-[1px] min-w-0 flex-auto rounded-r border border-solid border-neutral-300 bg-transparent bg-clip-padding px-3 py-[0.25rem] text-base font-normal leading-[1.6] text-neutral-700 outline-none transition duration-200 ease-in-out focus:z-[3] focus:border-primary focus:text-neutral-700 focus:shadow-[inset_0_0_0_1px_rgb(59,113,202)] focus:outline-none dark:border-neutral-600 dark:text-neutral-200 dark:placeholder:text-neutral-200 dark:focus:border-primary"
               value={search}
               onChange={(e) => setSearch(e.target.value)}
             ></input>
