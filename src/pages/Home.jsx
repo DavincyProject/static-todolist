@@ -128,7 +128,7 @@ export default function Home({ jsonData, setJsonData }) {
                 <div className="flex gap-1 mx-5 items-center justify-center">
                   <input
                     type="checkbox"
-                    className="w-[22px] h-[22px] hover:cursor-pointer"
+                    className="min-w-[22px]  h-[22px] hover:cursor-pointer"
                     checked={item.complete}
                     onChange={() => handleCheckbox(item.id)}
                     aria-label="Checkbox"
@@ -152,7 +152,7 @@ export default function Home({ jsonData, setJsonData }) {
                           onClick={() => handleEdit(item.id, item.task)}
                         >
                           <img
-                            className="w-[22px] h-[22px]"
+                            className="min-w-[22px]  h-[22px]"
                             src="edit.svg"
                             alt="edit"
                           ></img>
@@ -164,7 +164,7 @@ export default function Home({ jsonData, setJsonData }) {
                         onClick={() => handleDelete(item.id)}
                       >
                         <img
-                          className="w-[22px] h-[22px]"
+                          className="min-w-[22px]  h-[22px]"
                           src="delete.svg"
                           alt="delete"
                         ></img>
