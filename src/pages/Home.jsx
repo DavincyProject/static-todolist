@@ -26,7 +26,7 @@ export default function Home({ jsonData, setJsonData }) {
       } else if (activeFilter === "Todo") {
         return !item.complete; // munculkan item yang status completenya false
       }
-      return true;
+      return true; // jika semua kondisi tidak sesuai, langsung kembalikan data object semua tanpa difilter
     });
     setFilteredData(filtered); // setelah kondisi diatas terpenuhi, update filtered data menjadi sesuai filtered yang dipilih
   }, [jsonData, activeFilter]);
@@ -119,7 +119,9 @@ export default function Home({ jsonData, setJsonData }) {
                   <li
                     className={item.complete ? "line-through text-red-700" : ""}
                   >
-                    {item.task}
+                    <div className="container text-justify">
+                      {item.task}
+                    </div>
                   </li>
                 )}
 
@@ -130,33 +132,45 @@ export default function Home({ jsonData, setJsonData }) {
                     checked={item.complete}
                     onChange={() => handleCheckbox(item.id)}
                     aria-label="Checkbox"
+
+                    // Tampilkan tombol checkbox hanya jika editedItemId tidak sama dengan item.id
+                    style={{ display: editedItemId !== item.id ? "block" : "none" }}
                   />
 
                   {editedItemId === item.id ? (
                     <button onClick={() => handleSaveEdit(item.id)}>💾</button>
                   ) : (
-                    <button
-                      aria-label="button edit"
-                      onClick={() => handleEdit(item.id, item.task)}
-                    >
-                      <img
-                        className="w-[22px] h-[22px]"
-                        src="edit.svg"
-                        alt="edit"
-                      ></img>
-                    </button>
-                  )}
+                    <>
+                      {/* 
+                      Tampilkan tombol edit hanya jika editedItemId tidak sama dengan item.id 
+                      jika editedItemId tidak sama dengan item.id, maka tombol "edit" akan dirender,
+                      jika kondisi tidak terpenuhi, maka tombol "edit" tidak akan dirender
+                      */}
+                      {editedItemId !== item.id && (
+                        <button
+                          aria-label="button edit"
+                          onClick={() => handleEdit(item.id, item.task)}
+                        >
+                          <img
+                            className="w-[22px] h-[22px]"
+                            src="edit.svg"
+                            alt="edit"
+                          ></img>
+                        </button>
+                      )}
 
-                  <button
-                    aria-label="button delete"
-                    onClick={() => handleDelete(item.id)}
-                  >
-                    <img
-                      className="w-[22px] h-[22px]"
-                      src="delete.svg"
-                      alt="delete"
-                    ></img>
-                  </button>
+                      <button
+                        aria-label="button delete"
+                        onClick={() => handleDelete(item.id)}
+                      >
+                        <img
+                          className="w-[22px] h-[22px]"
+                          src="delete.svg"
+                          alt="delete"
+                        ></img>
+                      </button>
+                    </>
+                  )}
                 </div>
               </div>
             ))

@@ -6,16 +6,14 @@ export default function AddTodo({ jsonData, setJsonData }) {
   const [newTodo, setNewTodo] = useState("");
   const navigate = useNavigate();
 
-  const handleInputChange = (e) => {
-    setNewTodo(e.target.value);
-  };
-
   const handleSubmit = (e) => {
     e.preventDefault(); // supaya tidak refresh saat kirim form
 
-    // cek jika input kosong, jangan kirim form (selesai dari blok kode).
-    // jika tidak kosong akan dikirim data berupa object baru ke data.json
-    //menggunakan trim agar spasi saja tidak bisa terkirim juga
+    /* 
+    cek jika input kosong, jangan kirim form (selesai dari blok kode).
+    jika tidak kosong akan dikirim data berupa object baru ke data.json
+    menggunakan trim agar spasi saja tidak bisa terkirim juga 
+    */
     if (newTodo.trim() === "") return;
 
     const newTodoObject = {
@@ -56,7 +54,7 @@ export default function AddTodo({ jsonData, setJsonData }) {
                     aria-describedby="addon-wrapping"
                     className='relative m-0 block w-[1px] min-w-0 flex-auto rounded-r border border-solid border-neutral-300 bg-transparent bg-clip-padding px-3 py-[0.25rem] text-base font-normal leading-[1.6] text-neutral-700 outline-none transition duration-200 ease-in-out focus:z-[3] focus:border-primary focus:text-neutral-700 focus:shadow-[inset_0_0_0_1px_rgb(59,113,202)] focus:outline-none dark:border-neutral-600 dark:text-neutral-200 dark:placeholder:text-neutral-200 dark:focus:border-primary'
                     value={newTodo}
-                    onChange={handleInputChange}
+                    onChange={(e) => setNewTodo(e.target.value)}
                   ></input>
                 </div>
 
